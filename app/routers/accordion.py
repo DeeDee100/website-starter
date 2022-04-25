@@ -10,10 +10,14 @@ templates = Jinja2Templates(directory="templates/")
 def get_accordion(request: Request):
     tag = "flower"
     result = "Type a number"
-    return templates.TemplateResponse('accordion.html', context={'request': request, 'result': result, 'tag': tag})
+    return templates.TemplateResponse(
+        "accordion.html", context={"request": request, "result": result, "tag": tag}
+    )
 
 
 @router.post("/accordion", response_class=HTMLResponse)
 def post_accordion(request: Request, tag: str = Form(...)):
 
-    return templates.TemplateResponse('accordion.html', context={'request': request, 'tag': tag})
+    return templates.TemplateResponse(
+        "accordion.html", context={"request": request, "tag": tag}
+    )
